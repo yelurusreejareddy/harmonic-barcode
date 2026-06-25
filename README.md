@@ -1,33 +1,38 @@
-# harmonic-barcodes-3d-shape-classification
+# harmonic-barcode
 
-Research project at DePaul University implementing a matrix-based algorithm that
-computes harmonic persistence barcodes for 3D shape classification.
+Research project at DePaul University on tracking the persistence of harmonic
+chains through barcodes and stability analysis.
 September 2025 - Present.
 
 ## Research Problem
 
-Standard topological data analysis captures when a shape feature (loop, void, connected
-component) is born and when it dies - but throws away the actual geometric representative
-that carried it. Harmonic chain barcodes preserve those representatives: they extract
-the actual cycle generators that span each persistent homology class, carrying richer
-geometric information than birth-death pairs alone.
+Standard persistence barcodes capture when topological features are born and die
+but discard the actual geometric representatives that carried them. Harmonic chain
+barcodes preserve those representatives - extracting the cycle generators that span
+each persistent homology class and carrying richer geometric information than
+birth-death pairs alone.
 
-The goal is to use these richer descriptors to classify 3D shapes that standard
-persistence barcodes struggle to distinguish.
+This project investigates how these harmonic chain representatives behave, persist,
+and remain stable across different inputs.
 
-## Approach
+## Algorithm
 
-The algorithm operates on boundary matrices derived from a simplicial complex built
-over the 3D shape:
-
+- Builds boundary matrices from a simplicial complex over the input data
 - Applies Gram-Schmidt orthogonalization to extract harmonic chain representatives
-- Applies real-arithmetic corrections to handle numerical precision
+- Applies real-arithmetic corrections for numerical precision
 - Extracts generator cycles from the orthogonalized basis
-- Feeds the resulting feature vectors into SVM classifiers
+- Converts barcodes to persistence images
+- Feeds persistence image features into SVM classifiers
 
-## Shapes
+## Experiments
 
-Sphere, torus, cube, cylinder, cone, Mobius strip
+**Shape Experiments**
+Testing the harmonic barcode pipeline on standard geometric shapes to evaluate
+how well the extracted features distinguish different topologies.
+
+**Random Point Cloud Experiments**
+Generating random point clouds and testing whether harmonic barcode features
+can identify structural patterns across many randomly generated inputs.
 
 ## Stack
 
